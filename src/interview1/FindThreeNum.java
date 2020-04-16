@@ -6,13 +6,12 @@ public class FindThreeNum {
 	public static void main(String[] args) {
 		int array[] = { 1, 2, 5, 4, 6, 8, 9 };
 		int target = 15;
-		find(array, target);
+		find2(array, target);
 	}
-
+//approach1
 	private static void find(int[] array, int target) {
 		int sum = 0;
 		int minDiff = 0;
-
 		ArrayList<Keep> array2 = new ArrayList<>();
 		ArrayList<Integer> array3 = new ArrayList<>();
 		for (int i = 0; i < array.length; i++) {
@@ -21,22 +20,20 @@ public class FindThreeNum {
 					sum = array[i] + array[j] + array[k];
 					minDiff = Math.abs(sum - target);
 					Keep e = new Keep(array[i], array[j], array[k], sum, minDiff);
+					
 					array2.add(e);
 					array3.add(minDiff);
 				}
 			}
 		}
 
-		// System.out.println(array2);
-		// System.out.println(array3);
 		int min = array3.get(0);
 		for (int l = 0; l < array3.size(); l++) {
 			if (array3.get(l) < min) {
 				min = array3.get(l);
 			}
-
 		}
-		// System.out.println(min);
+	
 		for (int n = 0; n < array2.size(); n++) {
 			if (min == array2.get(n).min) {
 				System.out.println(array2.get(n).a + " " + array2.get(n).b + " " + array2.get(n).c);
@@ -44,8 +41,37 @@ public class FindThreeNum {
 		}
 	}
 
+
+//approach2
+private static void find2(int[] array, int target) {
+	int sum = 0;
+	int minDiff = 0;
+	int min= 0;
+	ArrayList<Keep> array2 = new ArrayList<>();
+	ArrayList<Integer> array3 = new ArrayList<>();
+	for (int i = 0; i < array.length; i++) {
+		for (int j = i + 1; j < array.length; j++) {
+			for (int k = j + 1; k < array.length; k++) {
+				sum = array[i] + array[j] + array[k];
+				minDiff = Math.abs(sum - target);
+				min = minDiff;
+				
+					System.out.println(min);
+					Keep e = new Keep(array[i], array[j], array[k], sum, min);
+					array2.add(e);
+					array3.add(min);
+			}
+			if(minDiff < min) {
+				min = minDiff;
+			}
+				
+			
+		}
+	}
+	//System.out.println(array3);
 }
 
+}
 class Keep {
 	int a;
 	int b;
