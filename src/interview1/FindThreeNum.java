@@ -1,6 +1,7 @@
 package interview1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 //find three num whose sum is closest to the target num
 public class FindThreeNum {
 	public static void main(String[] args) {
@@ -44,6 +45,20 @@ public class FindThreeNum {
 
 //approach2
 private static void find2(int[] array, int target) {
+	Arrays.sort(array);
+	if(array[0] > 0) {
+		System.out.println("All nums are positive");
+	}
+	else if(array.length == 0) {
+		System.out.println("array does not contain any element");
+	}
+	int firstElement = array[0];
+	//making the first element negative so that if it is already negative it would
+	//become positive and if it is positive it would become negative then we would look
+	//for that oppositive value of the first element in the array so that we get a zero
+	//by adding both negative and positive value
+	int negfirstElement = firstElement * (-1);
+	
 	int sum = 0;
 	int minDiff = 0;
 	int min= 0;
