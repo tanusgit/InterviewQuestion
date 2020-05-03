@@ -18,26 +18,23 @@ public class BinarySearch {
 	private static int binarySearch(int[] array, int target, int left, int right) {
 		Arrays.sort(array);
 		int mid = 0;
-		int root = 0;
+		
 		//System.out.println(right);
 		// int mid = array[0] + array[array.length-1];
 		if (array.length % 2 != 0) {
 			mid = (left + right+1) / 2;
 		}
 		else mid = (left + right) / 2;
-		root = mid;
+		
 		
 		//System.out.println(mid);
 		if (array.length == 0) {
 			return -1;
-		} else if (target == array[left]) {
-			return left;
-		} else if (target == array[right]) {
-			return right;
-		} else if (target == array[mid]) {
+		} 
+		if (target == array[mid]) {
 			return mid;
 		}
-		else if (target < array[root]){
+		else if (target < array[mid]){
 			int m = binarySearch( array, target, left, mid);
 			return m;                               
 		}
