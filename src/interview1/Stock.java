@@ -8,33 +8,34 @@ public class Stock {
 		int min;
 		int max;
 		int j = 1;
+
 		keeping kip = new keeping(0, 0);
-		;
-		// keeping kip2 = new keeping(4,5);
-		// System.out.println(kip2);
+
 		ArrayList<keeping> arr = new ArrayList<keeping>();
 		for (int l = 0; l < array.length - 1; l++) {
-			while(l<j) {
-				
+			while (array[l] < array[j]) {
+				min = l;
+				max = j;
 				j++;
+				kip.min = min;
+				kip.max = max;
+				arr.add(kip);
+				//l = j+1;
+				
 			}
-			System.out.println(kip);
+			if(array[l+1] < array[l]) {
+				System.out.println("no profit");
+			}
+			else if(array[l+1] > array[l]) {
+				kip.min = 0;
+				kip.max = l+1;
+			}
+			
 		}
-		
-
+		System.out.println(kip);
 	}
 }
-/*
- * for (int i = 1; i < array.length - 1; i++) {
-				if (array[l] < array[i]) {
-					min = l;
-					max = i;
-					kip.min = min;
-					kip.max = max;
-					arr.add(kip);
-				}
-			}
- */
+
 
 class keeping {
 	int min;
