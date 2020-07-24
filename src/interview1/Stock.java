@@ -3,51 +3,64 @@ package interview1;
 import java.util.ArrayList;
 
 public class Stock {
+	
 	public static void main(String args[]) {
-		int array[] = { 100, 180, 300, 400, 20, 100, 500 };
-		int min;
-		int max;
-		int j = 1;
+		Stock stock = new Stock();
 
-		keeping kip = new keeping(0, 0);
+		// stock prices on consecutive days
+		int price[] = {7, 5, 2, 1 };
+		int n = price.length;
 
-		ArrayList<keeping> arr = new ArrayList<keeping>();
-		for (int l = 0; l < array.length - 1; l++) {
-			while (array[l] < array[j]) {
-				min = l;
-				max = j;
-				j++;
-				kip.min = min;
-				kip.max = max;
-				arr.add(kip);
-				//l = j+1;
-				
+		// fucntion call
+		stock.sellbuy(price, n);
+	}
+	void sellbuy(int price[], int n) {
+		// Prices must be given for at least two days
+		if (n == 1)
+			return;
+		int count = 0;
+		// solution array
+		ArrayList<Keep> array = new ArrayList<Keep>();
+		int i = 0;
+		while (i < n - 1) {
+			System.out.println("inside first while loop " + i);
+			while ((i < n - 1) && (price[i + 1] <= price[i])) {
+				i++;
+				System.out.println("decreasing " + i);
 			}
-			if(array[l+1] < array[l]) {
-				System.out.println("no profit");
+			if (i == n - 1)
+				break;
+			Keep e = new Keep();
+			e.min = i;
+			i++;
+		
+			while ((i < n) && (price[i] >= price[i - 1])) {
+				i++;
+				System.out.println("increasing " + i);
 			}
-			else if(array[l+1] > array[l]) {
-				kip.min = 0;
-				kip.max = l+1;
-			}
+			// Store the index of maxima
+			e.max = i - 1;
+			array.add(e);
 			
-		}
-		System.out.println(kip);
+			count++;
+		}//end of loop
+		
+		
+		
+		if (count == 0)
+			System.out.println("There is no day when buying the stock " + "will make profit");
+		else
+			for (int j = 0; j < count; j++)
+				System.out.println("Buy on day: " + array.get(j).min + "        " + "Sell on day : " + array.get(j).max);
+
+		return;
+	}
+	
+	class Keep{
+		int min; int max;
 	}
 }
 
 
-class keeping {
-	int min;
-	int max;
 
-	keeping(int a, int b) {
-		min = a;
-		max = b;
-	}
 
-	public String toString() {
-		String res = "min = " + min + ", max =  " + max;
-		return res;
-	}
-}

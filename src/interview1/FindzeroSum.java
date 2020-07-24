@@ -15,27 +15,27 @@ public class FindzeroSum {
 	}
 
 	private static void find(int[] array) {
-		List<keep> list2 = new ArrayList<>();
+		List<Keep> list2 = new ArrayList<>();
 		int zero = 0;
 		int sum = 0;
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < array.length; j++) {
 				sum = array[i] + array[j];
 				if (sum == 0) {
-					keep k = new keep(array[i], array[j], sum);
+					Keep k = new Keep(array[i], array[j], sum);
 					list2.add(k);
 				}
 			}
 		}
 
-		for (keep kp : list2) {
+		for (Keep kp : list2) {
 			System.out.println(kp);
 		}
 
 	}
 }
 
-class keep {
+class Keep {
 	int element;
 	int element2;
 	int sum;
@@ -45,7 +45,7 @@ class keep {
 		return "keep [element=" + element + ", element2=" + element2 + ", sum=" + sum + "]";
 	}
 
-	public keep(int element, int element2, int sum) {
+	public Keep(int element, int element2, int sum) {
 		super();
 		this.element = element;
 		this.element2 = element2;
