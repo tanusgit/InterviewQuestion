@@ -4,51 +4,71 @@ public class Main {
 
 	public static void main(String args[]) {
 		linked m = new linked();
-		Node head = new Node();
-		m.addFront(5, head);
-		m.printNode(head);
-	}
-
-}
-
-class Node {
-	int data;
-	Node next;
-
-	Node(int d) {
-		data = d;
-	}
-
-	Node() {
+		m = m.addFront(m, 5);
+		m = m.addFront(m, 6);
+		m = m.addFront(m, 8);
+		m.printNode(m);
+		
+		
 
 	}
 
-	public String toString() {
-		String res = "printing head" + " " + data;
-		return res;
-	}
 }
 
 class linked {
 
-	public Node addFront(int d, Node head) {
-		Node temp = new Node(d);
-		temp = head;
-		if (head == null) {
-			head = temp;
-		} else {
-			head.next = temp;
+	class Node {
+		int data;
+		Node next;
+
+		Node(int d) {
+			data = d;
 		}
-		return head;
+
+		Node() {
+
+		}
+
 	}
 
-	public void printNode(Node head) {
-		Node temp = head;
-		while (temp != null) {
-			temp = temp.next;
+	Node head;
+	int size = 0;
+	linked list;
 
+	linked(int num, int val){
+	for(int i = 0; i <num; i++) {
+		Node node = new Node(val);
+		
+	}
+	
+	}
+
+	linked() {
+		size++;
+	}
+
+	public int size() {
+		return size;
+	}
+
+	public  linked addFront(linked list, int d) {
+		Node temp;
+		Node head = new Node(d);
+		temp = head;
+		if (list.head == null) {
+			list.head = temp;
+		} else {
+			list.head.next = temp;
 		}
-		System.out.println(temp.data);
+		return list;
+	}
+
+	public void printNode(linked list) {
+		while (list.head != null) {
+			System.out.println(list.head.data);
+			list.head = list.head.next;
+		}
+		
 	}
 
 }
