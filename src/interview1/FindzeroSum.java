@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import interview1.Stock.Keep;
+
 public class FindzeroSum {
 	// find a pair of elements in array whose sum is zero
 	public static void main(String[] args) {
@@ -22,8 +24,8 @@ public class FindzeroSum {
 			for (int j = 0; j < array.length; j++) {
 				sum = array[i] + array[j];
 				if (sum == 0) {
-					Keep k = new Keep(array[i], array[j], sum);
-					list2.add(k);
+				//	Keep k = new Keep(array[i], array[j], sum);
+				//	list2.add(k);
 				}
 			}
 		}
@@ -35,7 +37,7 @@ public class FindzeroSum {
 	}
 }
 
-class Keep {
+/*class Keep {
 	int element;
 	int element2;
 	int sum;
@@ -52,4 +54,4 @@ class Keep {
 		this.sum = sum;
 	}
 }
-
+*/
