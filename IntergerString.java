@@ -3,8 +3,8 @@ package yahoo;
 public class IntergerString {
 	public static void main(String[] args) {
 		String a = "123";
-		String b = "111";
-		//result = "242"
+		String b = "978";
+		//result = "1101"
 		StringBuilder m = new StringBuilder("135");
 		m.reverse();
 		//System.out.println(m);
@@ -58,7 +58,7 @@ public class IntergerString {
 		}
 		
 		else if((a.length()==b.length())) {
-			for(int i = 0; i < a.length(); i++) {
+			for(int i = a.length()-1; i >= 0 ; i--) {
 				//char c='1'; int a=Integer.parseInt(String.valueOf(c)); 
 				//getting the char from char array
 				char fa = a.charAt(i);
@@ -66,15 +66,24 @@ public class IntergerString {
 				//converting the char into int
 				int af =Integer.parseInt(String.valueOf(fa)); 
 				int bf =Integer.parseInt(String.valueOf(fb)); 				
-				result =  af+ bf;
 				
-				
+				result =  carry +  af+ bf;
+				System.out.println(" " + af + " " + bf + " = " +result);
+				if(result > 9) {
+					carry = 1;
+					result = result % 10;
+				}
+				else 
+					carry = 0;
 				c.append(result);
+				
 				//result = 1 + af + bf;
-				System.out.println("carry = " + carry);
-				System.out.println(carry + " " + a.charAt(i) + " " + b.charAt(i) + " = " +result);
-				//c.reverse();
+				System.out.println("carry = " + carry);	
 			}
+			if(carry == 1) {
+				c.append(carry);
+			}
+			c.reverse();
 		}
 		//c.reverse();
 		return c.toString();
