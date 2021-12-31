@@ -43,8 +43,9 @@ public class MaxSum {
         arr.add(a[0]);
         //res = a[0];
         for(int i = 0; i < a.length; i++){
-            res = a[i];
-            for(int j = i+1; j < a.length; j++){
+           // res = a[i];
+            res = 0;
+            for(int j = i; j < a.length; j++){
                 res = res  + a[j];
                 System.out.println( a[i]+ " + " + a[j] + " = " + res);
                 arr.add(res);
@@ -52,6 +53,7 @@ public class MaxSum {
 
         }
         for(int i : arr){
+            System.out.println(i);
             if(max < i){
                 max = i;
             }
