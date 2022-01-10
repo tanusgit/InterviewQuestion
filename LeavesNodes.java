@@ -3,7 +3,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeavesNodes {
-        public List<List<Integer>> findLeaves(TreeNode root) {
+
+    public static void main(String[] args) {
+        //12345
+        TreeNode t = new TreeNode(1);
+        TreeNode two = new TreeNode(2);
+        TreeNode three = new TreeNode(3);
+        TreeNode four = new TreeNode(4);
+        TreeNode five = new TreeNode(5);
+        t.left = two;
+        t.right = three;
+        two.left = four;
+        two.right = five;
+        List<List<Integer>> res = findLeaves(t);
+
+    }
+        public static List<List<Integer>> findLeaves(TreeNode root) {
             List<List<Integer>> arr = new ArrayList<>();
             List<Integer> list = new ArrayList<>();
             if(root.left == null && root.right == null){
@@ -25,6 +40,31 @@ public class LeavesNodes {
             System.out.println(arr);
             return arr;
     }
+
+
+    public List<List<Integer>> findLeaves2(TreeNode root) {
+        List<List<Integer>> arr = new ArrayList<>();
+
+        if(root == null){
+            return arr;
+        }
+        solver(root, arr);
+
+        return arr;
+    }
+
+    public int solver(TreeNode root, List<List<Integer>> arr){
+        if(root == null){
+            return -1;
+        }
+        int ref = Math.max(solver(root.left, arr), solver(root.right, arr)) + 1;
+        if(arr.size() <= ref){
+            arr.add(new ArrayList());
+        }
+        arr.get(ref).add(root.val);
+        return ref;
+    }
+
 }
 class TreeNode {
      int val;
