@@ -1,0 +1,51 @@
+package Practice;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Dividearray {
+    public static void main(String[] args) {
+        int[] a = { 6, 5, 3, 1, 1};
+        divideArray(a);
+        //if the total sum is even and the total number of elements is odd then we
+        //can divide the arrays in two half with same sum
+    }
+
+    private static void divideArray(int[] a) {
+        int sum = 0;
+        for(int i = 0; i < a.length; i++){
+            sum += a[i];
+        }
+        ArrayList<Integer> first = new ArrayList<>();
+        ArrayList<Integer> second = new ArrayList<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        if((sum % 2 == 0) && (a.length % 2 != 0)){
+            int desiredsum = sum /2;
+            for(int i = 0; i < a.length-1; i++){
+                for(int j = i+1; j < a.length; j++) {
+                        if(a[i] + a[j] == desiredsum){
+                            map.put(a[i], i);
+                            map.put(a[j], j);
+                            first.add(a[i]);
+                            first.add(a[j]);
+                    }
+                }
+            }
+            for(int i = 0; i < a.length; i++){
+                if(!map.containsKey(a[i])){
+                    second.add(a[i]);
+                }
+            }
+            System.out.println("printing first array ");
+            for(int k : first){
+                System.out.print(" " +k);
+            }
+            System.out.println(" ");
+            System.out.println("printing second array ");
+            for(int k : second){
+                System.out.print(" " +k);
+            }
+        }
+    }
+}
