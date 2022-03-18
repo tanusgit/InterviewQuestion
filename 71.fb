@@ -15,6 +15,7 @@ class Solution {
               }
           }
           return "/"+String.join("/", st);
+          //st.tostring() reverses the element in the stack so, st == foo/home becomes home/foo
           
         
       }
