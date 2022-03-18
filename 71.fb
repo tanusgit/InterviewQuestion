@@ -19,3 +19,36 @@ class Solution {
         
       }
 }
+
+
+//did not pass all the test cases
+class Solution {
+    public String simplifyPath(String path) {
+        String ch[] = path.split("/");
+        Queue<String> q = new LinkedList<>();
+        Stack<String> st = new Stack<>();
+        for(int i =0; i < ch.length; i++){
+            String c = ch[i];
+            if(!c.equals("")&&!c.equals("/") && !c.equals(".") && !c.equals("..") && !c.equals("...")){
+                st.push(c);
+                q.add(c);
+            }
+        }
+         System.out.println("printing q " +q);
+          
+        StringBuilder sb = new StringBuilder();
+           if(q.isEmpty()){
+            return "/";
+        }
+        while(!q.isEmpty()){
+            String slash = "/";
+            sb.append(q.poll() + slash);
+            slash="";
+            System.out.println(sb);
+        }
+     
+        String res = "/"+sb.toString();
+        String res2 = res.substring(0, res.length()-1);
+        return res2;
+    }
+}
