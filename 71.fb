@@ -1,0 +1,21 @@
+class Solution {
+      public String simplifyPath(String path) {
+       //split the string at '/' and create an array of string  
+        String [] s = path.split("/");
+        //create a string stack
+          Stack<String> st  = new Stack();
+          //check for the .. and if the stack is not empty
+          //if has .. and stack is not empty pop it
+          for(int i = 0; i < s.length; i++){
+              if(!st.isEmpty() && s[i].equals("..")){
+                  st.pop();
+              }//check if it does not have .., '', '.' then push it to the stack as it is a string
+              else if(!s[i].equals("..") && !s[i].equals(".") && !s[i].equals("")){
+                  st.push(s[i]);
+              }
+          }
+          return "/"+String.join("/", st);
+          
+        
+      }
+}
