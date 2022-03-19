@@ -55,3 +55,33 @@ class Solution {
         return true;
     }
 }
+
+//solution
+class Solution {
+    public boolean isPalindrome(String s) {
+        StringBuilder sb = new StringBuilder();
+        for(int i =0; i< s.length(); i++){
+            char c = s.charAt(i);
+            if(Character.isLetter(c) || Character.isDigit(c)){
+                sb.append(Character.toLowerCase(c));
+            }
+        }
+        return valid(sb.toString());
+        
+    }
+    
+    public boolean valid(String s){
+        int p =0;
+        int p2 = s.length()-1;
+        while(p < p2){
+            if(s.charAt(p) != s.charAt(p2)){
+                return false;
+            }else{
+                p++;
+                p2--;
+            }
+        }
+        return true;
+        
+    }
+}
