@@ -40,4 +40,15 @@ class Solution {
       }
         return false;
     }
+    //working
+     public static boolean isUnique3(String s){
+        HashSet<Character> set = new HashSet<>();
+        for(int i =0; i < s.length(); i++){
+            set.add(s.charAt(i));
+        }
+        if(s.length() == set.size()){
+            return true;
+        }
+        return false;
+    }
 }
