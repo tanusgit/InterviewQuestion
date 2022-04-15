@@ -1,35 +1,39 @@
 package Practice;
 
+import java.util.HashSet;
+
 public class Bivalued {
-    // you can also use imports, for example:
-// import java.util.*;
+    public static void main(String[] args) {
+    //Find longest length bi-valued slice in an array in java
+        int a[] = { 2 , 2 , 3 , 3 , 3 , 4 , 5 , 5, 4};
+        int a1[] = { 2 , 2 , 3 , 3 , 3 , 4 };
+        int b = bivalued(a);
+        System.out.println(b);
+    }
 
-// you can write to stdout for debugging purposes, e.g.
-// System.out.println("this is a debug message");
 
-    class Solution {
-        public int solution(int[] A) {
-            // write your code in Java SE 8
+        public static int bivalued(int[] arr) {
             int res = 0;
-            if(A.length == 0){
+            if(arr.length == 0){
                 return 0;
             }
-            int lseen = -1;
-            int slseen = -1;
+            int lastseen = -1;
+            int secondlastseen = -1;
             int count = 0;
-            int replace = 0;
-            for(int a : A){
-                if(a == lseen || a == slseen){
+            int count2 = 0;
+            for(int i = 0; i < arr.length; i++){
+                int num = arr[i];
+                if(num == lastseen || num == secondlastseen){
                     count++;
                 }else{
-                    count = replace +1;
+                    count = count2 +1;
                 }
-                if(a == lseen){
-                    replace++;
+                if(num == lastseen){
+                    count2++;
                 }else{
-                    replace = 1;
-                    slseen = lseen;
-                    lseen = a;
+                    count2 = 1;
+                    secondlastseen = lastseen;
+                    lastseen = num;
                 }
                 res = Math.max(count, res);
             }
@@ -37,4 +41,3 @@ public class Bivalued {
         }
     }
 
-}
