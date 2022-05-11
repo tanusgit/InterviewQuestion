@@ -26,3 +26,24 @@ class Solution {
         
     }
 }
+
+//another solution
+
+   public void rotate(int[][] mat) {
+        HashMap<Integer, Stack<Integer>> map = new HashMap<>();
+        
+        for(int i =0; i < mat.length; i++){
+            Stack<Integer> st = new Stack<>();
+            for(int j =0; j < mat[0].length; j++ ){
+                st.push(mat[j][i]);
+            }
+            map.put(i, st);
+        }
+         
+        for(int i =0; i < mat.length; i++){
+            for(int j =0; j < mat[0].length; j++ ){
+                mat[i][j] = map.get(i).pop();
+            }
+        }
+        
+    }
